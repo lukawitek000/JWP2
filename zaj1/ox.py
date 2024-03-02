@@ -20,7 +20,7 @@ class Board:
         """Zwraca True, jeśli pole na planszy ma prawidłowy numer i pole jest puste."""
         if space is None:
             return False
-        return space in ALL_SPACES or self.__board[space] == BLANK
+        return space in ALL_SPACES and self.__board[space] == BLANK
 
     def isWinner(self, player):
         """Zwraca True, jeśli gracz jest zwycięzcą tej planszy KIK."""
