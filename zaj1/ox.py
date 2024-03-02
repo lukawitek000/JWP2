@@ -3,28 +3,28 @@ X, O, BLANK = 'X', 'O', ' '  # Stałe reprezentujące wartości tekstowe.
 
 class Board:
     def __init__(self):
-        self._board = {}  # Plansza jest reprezentowana przez słownik Pythona.
+        self.__board = {}  # Plansza jest reprezentowana przez słownik Pythona.
         for space in ALL_SPACES:
-            self._board[space] = BLANK  # Wszystkie pola na początku są puste.
+            self.__board[space] = BLANK  # Wszystkie pola na początku są puste.
 
     def getBoardStr(self):
         """Zwraca tekstową reprezentację planszy."""
         return f'''
-            {self._board['1']}|{self._board['2']}|{self._board['3']} 1 2 3 
+            {self.__board['1']}|{self.__board['2']}|{self.__board['3']} 1 2 3 
             -+-+- 
-            {self._board['4']}|{self._board['5']}|{self._board['6']} 4 5 6 
+            {self.__board['4']}|{self.__board['5']}|{self.__board['6']} 4 5 6 
             -+-+- 
-            {self._board['7']}|{self._board['8']}|{self._board['9']} 7 8 9'''
+            {self.__board['7']}|{self.__board['8']}|{self.__board['9']} 7 8 9'''
 
     def isValidSpace(self, space):
         """Zwraca True, jeśli pole na planszy ma prawidłowy numer i pole jest puste."""
         if space is None:
             return False
-        return space in ALL_SPACES or self._board[space] == BLANK
+        return space in ALL_SPACES or self.__board[space] == BLANK
 
     def isWinner(self, player):
         """Zwraca True, jeśli gracz jest zwycięzcą tej planszy KIK."""
-        b, p = self._board, player  # Krótsze nazwy jako "składniowy cukier".
+        b, p = self.__board, player  # Krótsze nazwy jako "składniowy cukier".
         # Sprawdzenie, czy trzy takie same znaki występują w wierszach, kolumnach i po przekątnych.
         return ((b['1'] == b['2'] == b['3'] == p) or  # poziomo na górze
                 (b['4'] == b['5'] == b['6'] == p) or  # poziomo w środku
@@ -38,13 +38,13 @@ class Board:
     def isBoardFull(self):
         """Zwraca True, jeśli wszystkie pola na planszy są zajęte."""
         for space in ALL_SPACES:
-            if self._board[space] == BLANK:
+            if self.__board[space] == BLANK:
                 return False  # Jeśli nawet jedno pole jest puste, zwracaj False.
         return True  # Nie ma wolnych pól, zatem zwróć True.
 
     def updateBoard(self, space, mark):
         """Ustawia pole na planszy na podany znak."""
-        self._board[space] = mark
+        self.__board[space] = mark
 
 
 def main():
