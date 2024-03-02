@@ -1,6 +1,6 @@
 ALL_SPACES = list('123456789')  # Klucze słownika planszy KIK.
 X, O, BLANK = 'X', 'O', ' '  # Stałe reprezentujące wartości tekstowe.
-
+# what to do??
 
 def main():
     """Rozgrywka w kółko i krzyżyk."""
